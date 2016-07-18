@@ -1,0 +1,20 @@
+<md-bottom-sheet class="md-list bottomMenu" ng-cloak>
+  <md-list>
+    <md-list-item ng-click="storeFriend()" ng-if="currentUser.id !== user">
+      <md-icon class="material-icons">group</md-icon>
+      <p> Add Friend</p>
+    </md-list-item>
+    <md-list-item ng-click="hideMessage()">
+      <md-icon class="material-icons">visibility_off</md-icon>
+      <p> Hide Message</p>
+    </md-list-item>
+    <md-list-item ng-click="storeBlock()" ng-if="currentUser.id !== user">
+      <md-icon class="material-icons">block</md-icon>
+      <p> Block User</p>
+    </md-list-item>
+    <md-list-item ng-click="storeBan()" ng-if="currentUser.id !== user">
+      <md-icon class="material-icons">remove_circle_outline</md-icon>
+      <p> Ban User</p>
+    </md-list-item>
+  </md-list>
+</md-bottom-sheet>

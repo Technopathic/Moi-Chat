@@ -1,0 +1,32 @@
+<md-dialog aria-label="auth" flex-gt-md="30" flex="100" ng-cloak>
+  <div class="authForm">
+    <p>Create New Channel</p>
+    <form>
+      <md-dialog-content>
+        <div layout="column">
+          <md-input-container class="md-block">
+            <md-icon class="material-icons">short_text</md-icon>
+            <label>Channel Name</label>
+            <input ng-model="channelData.channelName" type="text">
+          </md-input-container>
+          <md-input-container class="md-block">
+            <md-icon class="material-icons">lock</md-icon>
+            <label>Channel Password (Optional)</label>
+            <input ng-model="channelData.channelPassword" type="password">
+          </md-input-container>
+          <md-switch ng-model="channelData.channelLock" ng-true-value="1" ng-false-value="0" class="md-warn">
+            Private Channel?
+          </md-switch>
+        </div>
+      </md-dialog-content>
+      <div class="md-dialog-actions" layout="column">
+        <md-button type="submit" class="authButton" flex="100" ng-click="storeChannel()">
+         Create Channel
+        </md-button>
+        <md-button class="authButton" flex="100" ng-click="dialogClose()">
+         Close
+        </md-button>
+      </div>
+    </form>
+  </div>
+</md-dialog>

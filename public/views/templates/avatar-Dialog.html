@@ -1,0 +1,23 @@
+<md-dialog flex-gt-md="30" flex="100" ng-cloak>
+  <div class="authForm">
+    <p>Change Avatar</p>
+    <form>
+      <md-dialog-content>
+        <div layout="column">
+          <md-divider></md-divider>
+          <input ngf-select="" class="ng-hide" ng-model="avatarData.avatar" id="makeAvatarImg" ngf-accept="'image/*'" type="file" ngf-max-size="5MB"/>
+          <label for="makeAvatarImg" class="md-button"><md-icon class="material-icons">add_a_photo</md-icon> Select Avatar</label>
+          <img ng-if="avatarData.avatar && avatarData.avatar != 0" class="preview-image" ngf-src="avatarData.avatar" />
+        </div>
+      </md-dialog-content>
+      <div class="md-dialog-actions" layout="column">
+        <md-button type="submit" flex="100" ng-click="storeAvatar()">
+         Upload
+        </md-button>
+        <md-button flex="100" ng-click="dialogClose()">
+         Close
+        </md-button>
+      </div>
+    </form>
+  </div>
+</md-dialog>

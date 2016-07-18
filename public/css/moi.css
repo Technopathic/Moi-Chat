@@ -1,0 +1,107 @@
+html, body {
+  font-family: 'Lato', sans-serif;
+  overflow-y: hidden !important
+}
+
+.brand {
+  font-size:1.3em !important;
+  font-weight:bold !important;
+  text-align:center;
+  font-variant:small-caps;
+}
+
+.messagesContainer {
+  height:calc(100vh - 140px);
+  overflow-y:auto !important;
+}
+
+.loadingMain {
+
+}
+
+.chatContainer {
+  position:fixed;
+  bottom:-20px;
+  background:#DDDDDD;
+}
+
+.chatWidth {
+  width:100%;
+}
+
+.alterChatWidth {
+  width:calc(100% - 304px);
+}
+
+.chatContainer md-input-container {
+  padding:0;
+  margin:0;
+}
+
+.chatContainer textarea{
+  background:#FFFFFF;
+  resize:none;
+  border:none;
+  border-radius:5px;
+  padding:5px;
+  min-height:40px !important;
+  font-size:1.5em;
+}
+
+.authForm {
+  padding:50px;
+}
+
+.authForm input {
+  text-shadow:none !important;
+}
+
+.authForm p{
+  padding:20px;
+  font-size:1.1em;
+  color:#AAAAAA;
+  font-variant:small-caps;
+  text-align:center;
+}
+
+.preview-image {
+  width:inherit;
+  max-width:100%;
+  height:inherit;
+  max-height:270px;
+  overflow:hidden;
+}
+
+.preview-image img {
+  width:100%;
+  height:auto;
+}
+
+.activeChannel {
+  background:rgba(0, 0, 0, 0.1);
+}
+
+.logoContainer {
+  padding:0 !important;
+  margin:0 !important;
+}
+
+.logoContainer img {
+  padding-left:5px;
+  width:auto;
+  height:35px;
+}
+
+md-sidenav md-toolbar .md-toolbar-tools {
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.bottomMenu {
+  background:#EEEEEE;
+}
+
+md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: #00cdcd !important;
+    background-color:#00cdcd !important;
+}

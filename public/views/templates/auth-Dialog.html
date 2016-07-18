@@ -1,0 +1,80 @@
+<md-dialog aria-label="auth" flex-gt-md="30" flex="100" ng-cloak>
+  <div class="authForm">
+    <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+      <md-tab label="Sign Up">
+        <p>New here? Join the fun!</p>
+        <form name="signUpForm">
+          <md-dialog-content>
+            <div layout="column" layout-sm="column">
+              <md-input-container flex class="md-icon-float">
+                <md-icon class="material-icons">email</md-icon>
+                <label>Email</label>
+                <input ng-model="signUp.email" type="email" name="email" minlength="5" ng-pattern="/^.+@.+\..+$/" required>
+                <div ng-messages="signUpForm.email.$error" ng-if='signUpForm.email.$dirty'>
+                  <div ng-message="required">This is required.</div>
+                  <div ng-message="minlength">Please enter a valid Email.</div>
+                  <div ng-message="pattern">Please enter a valid Email.</div>
+                </div>
+              </md-input-container>
+              <md-input-container flex class="md-icon-float">
+                <md-icon class="material-icons">person</md-icon>
+                <label>Username</label>
+                <input ng-model="signUp.username" type="text" name="username" minlength="3" md-maxlength="16" ng-pattern="/^[a-zA-Z0-9]*$/" required>
+                <div ng-messages="signUpForm.username.$error" ng-if='signUpForm.username.$dirty'>
+                  <div ng-message="required">This is required.</div>
+                  <div ng-message="pattern">No Whitespaces or Special Characters.</div>
+                  <div ng-message="minlength">Username must be 3 characters or more.</div>
+                  <div ng-message="md-maxlength">Username must be 12 characters or less.</div>
+                </div>
+              </md-input-container>
+              <md-input-container flex class="md-icon-float">
+                <md-icon class="material-icons">lock</md-icon>
+                <label>Password</label>
+                <input ng-model="signUp.password" type="password" name="password" minlength="5" required>
+                <div ng-messages="signUpForm.password.$error" ng-if='signUpForm.password.$dirty'>
+                  <div ng-message="required">This is required.</div>
+                  <div ng-message="minlength">Password must be 5 characters or more.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </md-dialog-content>
+          <div class="md-dialog-actions" layout="column">
+            <md-button type="submit" class="authButton" flex="100" ng-click="doSignUp()">
+             Sign Up
+            </md-button>
+            <md-button class="authButton" flex="100" ng-click="dialogClose()">
+             Close
+            </md-button>
+          </div>
+        </form>
+      </md-tab>
+      <md-tab label="Sign In">
+        <p>Returning user? Sign in!</p>
+        <form>
+          <md-dialog-content>
+            <div layout="column">
+              <md-input-container class="md-block">
+                <md-icon class="material-icons">email</md-icon>
+                <label>Email</label>
+                <input ng-model="signIn.email" type="email">
+              </md-input-container>
+              <md-input-container class="md-block">
+                <md-icon class="material-icons">lock</md-icon>
+                <label>Password</label>
+                <input ng-model="signIn.password" type="password">
+              </md-input-container>
+            </div>
+          </md-dialog-content>
+          <div class="md-dialog-actions" layout="column">
+            <md-button type="submit" class="authButton" flex="100" ng-click="doAuth()">
+             Sign In
+            </md-button>
+            <md-button class="authButton" flex="100" ng-click="dialogClose()">
+             Close
+            </md-button>
+          </div>
+        </form>
+      </md-tab>
+    </md-tabs>
+  </div>
+</md-dialog>

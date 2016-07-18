@@ -1,0 +1,106 @@
+<section layout="row" flex>
+
+  <md-sidenav class="md-sidenav-left"  md-component-id="left" md-disable-backdrop md-whiteframe="1" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="toggleChannels()">
+   <md-toolbar class="transparent">
+    <div class="md-toolbar-tools">
+      <span flex></span>
+      <span class="logoContainer"><img ng-src="img/moititle-small.png"/></span>
+      <span flex></span>
+    </div>
+   </md-toolbar>
+   <md-divider></md-divider>
+   <div layout="column">
+     <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+       <md-tab label="Channels">
+        <md-list layout-fill>
+           <md-list-item ng-repeat="c in channels" ng-click="getMessages(c.id, c.channelLock, c.userID); toggleChannels(); changeType('Channel');" ng-class="activeChannel.channelID == c.id ? 'activeChannel' : ''">
+              <md-icon class="material-icons" ng-if="c.channelLock == 0">public</md-icon>
+              <md-icon class="material-icons" ng-if="c.channelLock == 1">lock_outline</md-icon>
+              <p><span class="hash">#</span>{{c.channelName}}</p>
+              <md-divider></md-divider>
+           </md-list-item>
+         </md-list>
+         <div layout="row">
+          <md-button ng-click="refreshChannels()" flex ng-disabled="authenticated != true"><md-icon class="material-icons">refresh</md-icon> Refresh</md-button>
+          <md-button ng-click="createChannel($event)" flex ng-disabled="authenticated != true"><md-icon class="material-icons">add</md-icon> Channel</md-button>
+        </div>
+      </md-tab>
+      <md-tab label="Friends" ng-if="authenticated == true" md-on-select="getFriends()">
+        <md-list layout-fill>
+         <md-list-item ng-repeat="f in friends" ng-click="getFmessages(f.id); toggleChannels(); changeType('Friend');" ng-class="activeChannel.channelID == c.id ? 'activeChannel' : ''">
+            <img ng-src="{{ f.avatar }}" class="md-avatar" />
+            <p>{{f.name}}</p>
+            <md-divider></md-divider>
+         </md-list-item>
+       </md-list>
+      </md-tab>
+     </m-tabs>
+    </div>
+  </md-sidenav>
+
+
+  <div layout="column" flex md-swipe-right="toggleChannels()">
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Channels" ng-click="toggleChannels()" hide-gt-md>
+          <md-icon class="material-icons">menu</md-icon>
+        </md-button>
+        <h2 flex class="brand">
+          <span>#{{activeChannel.channelName}}</span>
+        </h2>
+        <md-menu ng-if="authenticated == true" md-position-mode="target-right target">
+          <md-button class="md-icon-button" aria-label="Profile" ng-click="openMenu($mdOpenMenu,$event)">
+            <md-icon class="material-icons">person</md-icon>
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item>
+              <md-button aria-label="Avatar" ng-click="avatarDialog($event)">
+                <md-icon class="material-icons">insert_photo</md-icon> Change Avatar
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button aria-label="Exit" ng-click="signOut()">
+                <md-icon class="material-icons">exit_to_app</md-icon> Sign Out
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+        <md-button class="md-icon-button" aria-label="Exit" ng-if="authenticated != true" ng-click="authDialog()">
+          <md-icon class="material-icons">person_add</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <div layout="column" class="messagesContainer" scroll-glue>
+      <md-list flex>
+        <md-list-item ng-if="blocks.indexOf(m.userID) === -1 || $parent.mHidden.indexOf(m.id) === -1" class="md-2-line" ng-repeat="m in messages.data" ng-click="bottomMenu(m.userID, m.id)">
+          <img ng-src="{{m.avatar}}" class="md-avatar"/>
+          <div class="md-list-item-text" layout="column">
+            <h3>{{m.name}} <span class="timeStamp">- {{m.created_at | amCalendar}}</span></h3>
+            <p ng-bind-html="m.messageBody | linky"></p>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </div>
+
+    <div class="chatContainer chatWidth" layout="column" layout-align="end stretch" layout-padding hide-gt-md>
+      <form layout="row" layout-align="space-between start">
+        <md-input-container md-no-float="true" flex>
+          <textarea ng-enter="sendMessage(chatType)" ng-model="messageData.messageBody"></textarea>
+        </md-input-container>
+        <md-button type="submit" class="md-icon-button" ng-click="sendMessage(chatType)"><md-icon class="material-icons">send</md-icon></md-button>
+      </form>
+    </div>
+
+    <div class="chatContainer alterChatWidth" layout="column" layout-align="end stretch" layout-padding hide-sm hide-xs>
+      <form layout="row" layout-align="space-between start">
+        <md-input-container md-no-float="true" flex>
+          <textarea ng-enter="sendMessage(chatType)" ng-model="messageData.messageBody"></textarea>
+        </md-input-container>
+        <md-button type="submit" class="md-icon-button" ng-click="sendMessage(chatType)"><md-icon class="material-icons">send</md-icon></md-button>
+      </form>
+    </div>
+  </div>
+</section>

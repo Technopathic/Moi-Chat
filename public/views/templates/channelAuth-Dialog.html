@@ -1,0 +1,24 @@
+<md-dialog aria-label="auth" flex-gt-md="30" flex="100" ng-cloak>
+  <div class="authForm">
+    <p>Channel Password</p>
+    <form>
+      <md-dialog-content>
+        <div layout="column">
+          <md-input-container class="md-block">
+            <md-icon class="material-icons">lock</md-icon>
+            <label>Channel Password</label>
+            <input ng-model="authData.channelPassword" type="password">
+          </md-input-container>
+        </div>
+      </md-dialog-content>
+      <div class="md-dialog-actions" layout="column">
+        <md-button type="submit" class="authButton" flex="100" ng-click="chanAuth()">
+         Join Channel
+        </md-button>
+        <md-button class="authButton" flex="100" ng-click="dialogClose()">
+         Close
+        </md-button>
+      </div>
+    </form>
+  </div>
+</md-dialog>

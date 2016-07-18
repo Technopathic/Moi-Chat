@@ -1,0 +1,28 @@
+{
+  "name": "moi",
+  "description": "The local area chat.",
+  "main": "",
+  "authors": [
+    "Technopathic"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/Technopathic/Moi",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.6",
+    "angular-material": "^1.0.9",
+    "angular-ui-router": "^0.3.1",
+    "ng-file-upload": "^12.0.4",
+    "angular-sanitize": "^1.5.7",
+    "pusher-angular": "^0.1.9",
+    "angular-scroll-glue": "^2.0.7",
+    "material-design-icons-iconfont": "^2.0.4",
+    "angular-moment": "^1.0.0-beta.6"
+  }
+}
